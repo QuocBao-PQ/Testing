@@ -155,13 +155,7 @@ def scraping_jobs(scraped_web, num):
             print (url)
 
             # Navigate to the URL
-            chrome_options = uc.ChromeOptions()
-            chrome_options.binary_location = "/usr/bin/google-chrome"  # Path to Chrome binary
-            chrome_options.add_argument('--headless')
-            chrome_options.add_argument('--no-sandbox')
-            chrome_options.add_argument('--disable-dev-shm-usage')
-
-            driver = uc.Chrome(options=chrome_options, version_main=127)
+            driver = uc.Chrome (version_main=127)
             driver.get(url)
 
 
@@ -188,14 +182,6 @@ def scraping_jobs(scraped_web, num):
                 # print (job_url)
 
                 # Navigate to the job URL
-                chrome_options = uc.ChromeOptions()
-                chrome_options.binary_location = "/usr/bin/google-chrome"  # Path to Chrome binary
-                chrome_options.add_argument('--headless')
-                chrome_options.add_argument('--no-sandbox')
-                chrome_options.add_argument('--disable-dev-shm-usage')
-
-                driver = uc.Chrome(options=chrome_options, version_main=127)
-                
                 driver.get(job_url)
                 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'preview-job-overview')))    
                 
@@ -353,7 +339,6 @@ sender_password = "srad ykpc opmm apdn"
 subject = "Job list"
 body = "Please find the attached Excel file."
 file_path = r"D:\Máy tính\Python\Project\Scraping_Web_Bot\jobs_data.xlsx"
-# file_path = "/app/jobs_data.xlsx"
 email_regex = r'^[a-zA-Z0-9]+([\.|\_|\-]{0,1}[a-zA-Z0-9])+@([a-zA-Z0-9][\.|\-]{0,1})+\.[a-zA-Z]{2,}$'
 
 # User_input
