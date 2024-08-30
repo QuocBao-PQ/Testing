@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.11-slim
+FROM python:3.9-slim
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -42,8 +42,8 @@ WORKDIR /app
 # Copy the current directory contents into the container
 COPY . /app
 
-# Install any needed packages specified in requirements.txt
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Run both Python scripts
-CMD ["sh", "-c", "Create_Bot.py && python My_Bot.py"]
+# Run Xvfb in the background and then start your bot
+CMD xvfb-run -a python Create_Bot.py && python My_Bot.py
