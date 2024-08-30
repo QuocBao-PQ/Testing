@@ -16,6 +16,7 @@ import os
 import re
 import argparse
 from selenium.webdriver.chrome.service import Service
+import shutil
 
 
 # from apscheduler.schedulers.background import BackgroundScheduler
@@ -107,7 +108,10 @@ def get_number_of_pages(scraped_web):
 
     # Navigate to the URL
     chrome_options = uc.ChromeOptions()
-    chrome_options.binary_location = "/usr/bin/google-chrome"  # Specify the path to the Chrome binary
+
+    # Detect the Chrome binary path dynamically
+    chrome_path = shutil.which("google-chrome") or "/usr/bin/google-chrome"
+    chrome_options.binary_location = chrome_path
 
     driver = uc.Chrome(options=chrome_options, version_main=127)
     driver.get(url)
