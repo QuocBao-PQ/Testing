@@ -48,3 +48,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Run Xvfb in the background and then start your bot
 CMD xvfb-run -a python Create_Bot.py && python My_Bot.py
+
+docker exec -it <container_name> google-chrome --version
