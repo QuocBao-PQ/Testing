@@ -1,11 +1,12 @@
 # Use an official Python runtime as a parent image
 FROM python:3.10-slim
 
-# Install system dependencies
+# Install system dependencies, including xauth
 RUN apt-get update && apt-get install -y \
     wget \
     unzip \
     xvfb \
+    xauth \
     libxi6 \
     libgconf-2-4 \
     libnss3 \
