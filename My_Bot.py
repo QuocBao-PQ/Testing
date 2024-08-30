@@ -188,6 +188,14 @@ def scraping_jobs(scraped_web, num):
                 # print (job_url)
 
                 # Navigate to the job URL
+                chrome_options = uc.ChromeOptions()
+                chrome_options.binary_location = "/usr/bin/google-chrome"  # Path to Chrome binary
+                chrome_options.add_argument('--headless')
+                chrome_options.add_argument('--no-sandbox')
+                chrome_options.add_argument('--disable-dev-shm-usage')
+
+                driver = uc.Chrome(options=chrome_options, version_main=127)
+                
                 driver.get(job_url)
                 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'preview-job-overview')))    
                 
