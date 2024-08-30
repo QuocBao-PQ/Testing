@@ -15,6 +15,7 @@ from email import encoders
 import os
 import re
 import argparse
+from selenium.webdriver.chrome.service import Service
 
 
 # from apscheduler.schedulers.background import BackgroundScheduler
@@ -105,7 +106,10 @@ def get_number_of_pages(scraped_web):
     # url = 'https://itviec.com/it-jobs?job_selected'
 
     # Navigate to the URL
-    driver = uc.Chrome (version_main=127)
+    chrome_options = uc.ChromeOptions()
+    chrome_options.binary_location = "/usr/bin/google-chrome"  # Specify the path to the Chrome binary
+
+    driver = uc.Chrome(options=chrome_options, version_main=127)
     driver.get(url)
 
 
