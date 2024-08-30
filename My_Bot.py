@@ -345,6 +345,7 @@ sender_password = "srad ykpc opmm apdn"
 subject = "Job list"
 body = "Please find the attached Excel file."
 file_path = r"D:\Máy tính\Python\Project\Scraping_Web_Bot\jobs_data.xlsx"
+# file_path = "/app/jobs_data.xlsx"
 email_regex = r'^[a-zA-Z0-9]+([\.|\_|\-]{0,1}[a-zA-Z0-9])+@([a-zA-Z0-9][\.|\-]{0,1})+\.[a-zA-Z]{2,}$'
 
 # User_input
