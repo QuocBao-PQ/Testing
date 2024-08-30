@@ -1,12 +1,11 @@
 # Use an official Python runtime as a parent image
 FROM python:3.10-slim
 
-# Install system dependencies, including xauth
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     wget \
     unzip \
     xvfb \
-    xauth \
     libxi6 \
     libgconf-2-4 \
     libnss3 \
@@ -20,8 +19,8 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
-# Download and install Chrome
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+# Install a specific version of Chrome
+RUN wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_91.0.4472.114-1_amd64.deb \
     && dpkg -i google-chrome-stable_current_amd64.deb \
     || apt-get -fy install \
     && rm google-chrome-stable_current_amd64.deb
@@ -36,6 +35,7 @@ RUN LATEST=$(wget -q -O - https://chromedriver.storage.googleapis.com/LATEST_REL
 
 # Set display port to avoid crashes
 ENV DISPLAY=:99
+ENV CHROME_BIN=/usr/bin/google-chrome
 
 # Set up the working directory
 WORKDIR /app
@@ -47,4 +47,4 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run Xvfb in the background and then start your bot
-CMD xvfb-run -a python Create_Bot.py && python My_Bot.py
+CMD ["xvfb-run", "-a", "python", "My_Bot.py"]
