@@ -1,7 +1,7 @@
 # Use an official Python runtime as a parent image
 FROM python:3.10-slim
 
-# Install system dependencies, including xauth
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     wget \
     unzip \
@@ -47,5 +47,8 @@ COPY . /app
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy the necessary files into the container (adjust path to the build context)
+COPY ./Testing/jobs_data.xlsx /app/jobs_data.xlsx
+
 # Run Xvfb in the background and then start both scripts
-CMD xvfb-run -a python Create_Bot.py && xvfb-run -a python My_Bot.py
+CMD xvfb-run -a bash -c "python Create_Bot.py && python My_Bot.py"
