@@ -156,6 +156,7 @@ def scraping_jobs(scraped_web, num):
     
     try:
         while page <= int(num):
+            print(num)
             page_str = '&page=' + str(page)
             url = scraped_web + page_str
             print (url)
