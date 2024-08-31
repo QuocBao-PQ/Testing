@@ -149,10 +149,10 @@ def scraping_jobs(scraped_web, num):
     Job_Link = []
     page = 1
     
-    chrome_options = uc.ChromeOptions()
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--disable-dev-shm-usage')
+    # chrome_options = uc.ChromeOptions()
+    # chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--no-sandbox')
+    # chrome_options.add_argument('--disable-dev-shm-usage')
     
     try:
         while page <= int(num):
@@ -161,7 +161,7 @@ def scraping_jobs(scraped_web, num):
             print (url)
 
             # Navigate to the URL
-            driver = uc.Chrome (options=chrome_options)
+            driver = uc.Chrome (version_main=127)
             driver.get(url)
 
 
