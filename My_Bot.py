@@ -160,7 +160,7 @@ def scraping_jobs(scraped_web, num):
             url = scraped_web + page_str
             print (url)
 
-            # Navigate to the URL
+            # Navigate to the URLx
             driver = uc.Chrome (version_main=127)
             driver.get(url)
 
@@ -198,6 +198,7 @@ def scraping_jobs(scraped_web, num):
                 # Parse the job page source with BeautifulSoup
                 soup_job = BeautifulSoup(job_page_source, 'html.parser')
 
+                print(soup_job.contents)
                 column2 = soup_job.find('div', 'col-md-7 p-0')
                 # print (column2)
 
