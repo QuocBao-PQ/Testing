@@ -183,7 +183,8 @@ def scraping_jobs(scraped_web, num):
 
                 # Navigate to the job URL
                 driver.get(job_url)
-                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'preview-job-overview')))    
+                # WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'preview-job-overview')))    
+                WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CLASS_NAME, 'preview-job-overview')))
                 
                 # Get the job page source
                 job_page_source = driver.page_source
