@@ -149,21 +149,22 @@ def scraping_jobs(scraped_web, num):
     Job_Link = []
     page = 1
     
-    # chrome_options = uc.ChromeOptions()
-    # chrome_options.add_argument('--headless')
-    # chrome_options.add_argument('--no-sandbox')
-    # chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options = uc.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
     
     try:
         while page <= int(num):
-            print(num)
             page_str = '&page=' + str(page)
             url = scraped_web + page_str
             print (url)
 
             # Navigate to the URLx
-            driver = uc.Chrome (version_main=127)
+            driver = uc.Chrome(options=chrome_options, version_main=127)
             driver.get(url)
+            
+            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'job-card')))
 
 
             # Get the page source after the content is fully loaded
