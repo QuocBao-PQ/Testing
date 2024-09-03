@@ -164,7 +164,7 @@ def scraping_jobs(scraped_web, num):
             driver = uc.Chrome(options=chrome_options)
             driver.get(url)
             
-            WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.CLASS_NAME, 'job-card')))
+            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'job-card')))
 
 
             # Get the page source after the content is fully loaded
@@ -367,7 +367,7 @@ def run_the_script(city, details_of_job, recipient_email):
     # print (anumber_of_page)
     
     scraping_jobs(scraped_web, anumber_of_page)
-    send_email_with_attachment(sender_email, sender_password, recipient_email, subject, body, file_path)
+    # send_email_with_attachment(sender_email, sender_password, recipient_email, subject, body, file_path)
     
     end_time = time.time()
     time_taken = round((end_time - start_time)/60, 0)
