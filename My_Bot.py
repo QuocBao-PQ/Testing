@@ -161,7 +161,7 @@ def scraping_jobs(scraped_web, num):
             print (url)
 
             # Navigate to the URLx
-            driver = uc.Chrome(options=chrome_options, version_main=127)
+            driver = uc.Chrome(options=chrome_options)
             driver.get(url)
             
             WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'job-card')))
