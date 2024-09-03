@@ -150,7 +150,7 @@ def scraping_jobs(scraped_web, num):
     page = 1
     
     chrome_options = uc.ChromeOptions()
-    chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
     
@@ -164,7 +164,7 @@ def scraping_jobs(scraped_web, num):
             driver = uc.Chrome(options=chrome_options)
             driver.get(url)
             
-            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'job-card')))
+            WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.CLASS_NAME, 'job-card')))
 
 
             # Get the page source after the content is fully loaded
