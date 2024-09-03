@@ -113,7 +113,7 @@ def get_number_of_pages(scraped_web):
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
 
-    driver = uc.Chrome(options=chrome_options, version_main=127)
+    driver = uc.Chrome(options=chrome_options)
 
 
     # Get the page source after the content is fully loaded
@@ -273,8 +273,10 @@ def scraping_jobs(scraped_web, num):
             driver.quit()
             page = page + 1
 
-    except Exception:
-        print (f'Unable to find a suitable job on the website or website does not have data. Please try again.')
+    except Exception as e:
+        print (f'error: {e}')
+        # print (f'Unable to find a suitable job on the website or website does not have data. Please try again.')
+    
     my_dic = {'Job_Title': Job_Title,
         'Compay_name': Compay_name,
         'Job_Location': Job_Location,
